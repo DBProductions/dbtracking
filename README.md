@@ -22,6 +22,9 @@ Imagetag
 `<img src="http://127.0.0.1:3000/?site=track_with_image_on_page&url=/">`
 
 Script
+`var site = 'emaple. site';
+var img = new Image();`
+
 `&lt;script>
 
 var site = 'example site'; 
