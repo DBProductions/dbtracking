@@ -1,5 +1,4 @@
-var sys = require('sys'),
-    http = require('http'),
+var http = require('http'),
     querystring = require('querystring'),
     url = require('url'),
     modconn = require('./mod-conn');
@@ -29,4 +28,5 @@ http.createServer(function(req, res) {
     modconn.save(doc);
     res.end();
 }).listen(3000);
-sys.puts('Server runs and listen to http://127.0.0.1:3000/');
+
+console.log('Server runs and listen to http://127.0.0.1:3000/');
