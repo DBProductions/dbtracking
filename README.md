@@ -1,10 +1,14 @@
-Tracking with NodeJS and MongoDB or CouchDB
+Tracking with NodeJS
+====================
+Can use MongoDB or CouchDB to store data.
 
-## Require:
+### MongoDB
  - mongodb
+
+### CouchDB
  - cradle
 
-Write data to a local database the module can act with mongodb and couchdb.
+Write data to database, the module can act with mongodb and couchdb.
 
 ## Configuration
 
@@ -18,16 +22,10 @@ It's JSON and look like this:
 
 ## How to track data
 
-Imagetag
+Imagetag<br />
 `<img src="http://127.0.0.1:3000/?site=track_with_image_on_page&url=/">`
 
-Script
-`&lt;script>
-
-var site = 'example site'; 
-
-var img = new Image(); 
-
-img.src = "http://127.0.0.1:3000/?site=" + site + "&url=" + document.location.href;
-
-&lt;/script>`
+Script<br />
+`var site = 'example site';`<br />`
+var img = new Image();`<br />`
+img.src = "http://127.0.0.1:3000/?site=" + site + "&url=" + document.location.href;`
