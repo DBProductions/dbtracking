@@ -9,6 +9,7 @@ var options = {
     port: 27017,
     dbname: 'tracking'
 }
+
 modconn.connection(options);    
 
 http.createServer(function(req, res) {
@@ -25,7 +26,7 @@ http.createServer(function(req, res) {
         site: params.site,
         timestamp: new Date().getTime()
     };
-    if (params.step === undefined) {
+    if (params.step !== undefined) {
         doc.step = params.step; 
     }
     modconn.save(doc);

@@ -3,8 +3,8 @@ var db = null;
 var dbname = null;
 
 module.exports.connection = function(options) {
-    var name = options.db;	
-    var dbname = options.dbname || 'tracking';
+    name = options.db;	
+    dbname = options.dbname || 'tracking';
     var host = options.host || 'localhost';    
     if (name == 'mongodb') {  	    
         var port = options.port || 27017;		
@@ -24,13 +24,13 @@ module.exports.connection = function(options) {
 
 module.exports.save = function(doc) {
     if (name == 'mongodb') {
-	db.open(function() {
-	    db.collection(dbname, function(err, collection) {
-	    	collection.insert(doc, function() {
-                console.log(doc);				
+        db.open(function() {
+            db.collection(dbname, function(err, collection) {
+                collection.insert(doc, function() {
+                    console.log(doc);				
+                });
             });
-	    });
-	});
+        });
     } else if (name == 'couchdb') {
         db.save(doc, function(err, res) {
             console.log(doc);
