@@ -16,15 +16,18 @@ http.createServer(function(req, res) {
     elems = url.parse(req.url);
     params = querystring.parse(elems.query);
     if (params.url === undefined || params.site === undefined) {
-	res.writeHead(200, {'Content-Type': 'image/gif'});
-	res.end();
-	return;
+        res.writeHead(200, {'Content-Type': 'image/gif'});
+        res.end();
+        return;
     }
     doc = {
-	url: params.url,
-	site: params.site,
-	timestamp: new Date().getTime()
+        url: params.url,
+        site: params.site,
+        timestamp: new Date().getTime()
     };
+    if (params.step === undefined) {
+        doc.step = params.step; 
+    }
     modconn.save(doc);
     res.end();
 }).listen(3000);
