@@ -31,6 +31,7 @@ There is a optional parameter `step`, if you want to track different steps.
 ## How to track data
 
 Imagetag  
+
     <img src="http://127.0.0.1:3000/?site=track_with_image_on_page&url=/">
 
 Script
