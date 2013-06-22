@@ -36,6 +36,8 @@ Imagetag
 
 Script
 
+    <script>  
     var site = 'example site';  
     var img = new Image();  
-    img.src = "http://127.0.0.1:3000/?site=" + site + "&url=" + document.location.href;
+    img.src = "http://127.0.0.1:3000/?site=" + site + "&url=" + document.location.href;  
+    </script>

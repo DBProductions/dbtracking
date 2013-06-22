@@ -8,20 +8,20 @@ var options = {
     host: 'localhost',
     port: 27017,
     dbname: 'tracking'
-}
+}    
 
-modconn.connection(options);    
+modconn.tracking(options);
 
 http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});    
     elems = url.parse(req.url);
     params = querystring.parse(elems.query);
+    res.writeHead(200, {'Content-Type': 'image/gif'});
     if (params.url === undefined || params.site === undefined) {
-        res.writeHead(200, {'Content-Type': 'image/gif'});
         res.end();
         return;
     }
-    doc = {
+    var doc = {
         url: params.url,
         site: params.site,
         timestamp: new Date().getTime()
@@ -29,7 +29,9 @@ http.createServer(function(req, res) {
     if (params.step !== undefined) {
         doc.step = params.step; 
     }
-    modconn.save(doc);
+    modconn.save(doc, function(data) {
+        console.log(data);
+    });
     res.end();
 }).listen(3000);
 

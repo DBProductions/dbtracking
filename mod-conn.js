@@ -1,17 +1,19 @@
-var name = null;
-var db = null;
-var dbname = null;
+var name = null,
+    host = null,
+    port = null,
+    db = null,
+    dbStr = null,
+    dbname = null;
 
-module.exports.connection = function(options) {
-    name = options.db;	
+module.exports.tracking = function(options) {
+    name = options.db;  
     dbname = options.dbname || 'tracking';
-    var host = options.host || 'localhost';    
-    if (name == 'mongodb') {  	    
-        var port = options.port || 27017;		
-        var mongo = require('mongodb');
-        db = new mongo.Db(dbname, new mongo.Server(host, port, {}), {});		
-    } else if (name == 'couchdb') {	    
-        var port = options.port || 5984;
+    host = options.host || 'localhost';
+    if (name == 'mongodb') {        
+        port = options.port || 27017;
+        db = require('mongodb').MongoClient;
+    } else if (name == 'couchdb') {     
+        port = options.port || 5984;
         var cradle = require('cradle');
         new(cradle.Connection)(host, port, {
             cache: true,
@@ -22,18 +24,20 @@ module.exports.connection = function(options) {
     }
 };
 
-module.exports.save = function(doc) {
+module.exports.save = function(doc, cb) {
     if (name == 'mongodb') {
-        db.open(function() {
+        db.connect('mongodb://'+host+':'+port+'/'+dbname, function(err, db) {
             db.collection(dbname, function(err, collection) {
+                if (err) console.log(err);
                 collection.insert(doc, function() {
-                    console.log(doc);				
+                    cb(doc);               
                 });
             });
         });
     } else if (name == 'couchdb') {
         db.save(doc, function(err, res) {
-            console.log(doc);
-        });	
+            if (err) console.log(err);
+            cb(doc);
+        }); 
     }
 };
