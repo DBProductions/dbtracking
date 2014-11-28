@@ -1,24 +1,6 @@
-Tracking with NodeJS
-====================
-Can use MongoDB or CouchDB to store data.
+# dbtracking
 
-### MongoDB
- - mongodb
-
-### CouchDB
- - cradle
-
-Write data to database, the module can act with mongodb and couchdb.
-
-## Configuration
-
-MongoDB  
-
-`var options = {db: 'mongodb', host: 'localhost', port: 27017, dbname: 'tracking'};`
-
-CouchDB  
-
-`var options = {db: 'couchdb', host: 'localhost', port: 5984, dbname: 'tracking'};`
+Simple tracking system based on NodeJS which stores data in a MongoDB.
 
 ## Data
 
@@ -41,3 +23,6 @@ Script
     var img = new Image();  
     img.src = "http://127.0.0.1:3000/?site=" + site + "&url=" + document.location.href;  
     </script>
+
+## Feedback
+Star this repo if you found it useful. Use the github issue tracker to give feedback on this repo.

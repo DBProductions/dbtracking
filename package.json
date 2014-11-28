@@ -1,0 +1,28 @@
+{
+  "name": "dbtracking",
+  "version": "0.0.2",
+  "description": "Simple tracking with NodeJS and MongoDB",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DBProductions/dbtracking.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "tracking"
+  ],
+  "author": "DBProductions",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DBProductions/dbtracking/issues"
+  },
+  "homepage": "https://github.com/DBProductions/dbtracking",
+  "dependencies": {
+    "mongodb": "^1.4.22",
+    "querystring": "^0.2.0"
+  }
+}
